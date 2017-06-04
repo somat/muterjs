@@ -1,0 +1,14 @@
+{
+  "name": "putar",
+  "version": "0.1.0",
+  "main": "main.js",
+  "devDependencies": {
+    "electron": "^1.6.10"
+  },
+  "scripts": {
+    "start": "electron app.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "description": ""
+}

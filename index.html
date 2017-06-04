@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Player</title>
+    <link rel="stylesheet" href="./vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <audio
+            class="player"
+            id="player"
+            controls="play pause volume"
+            loop=""
+            muted=""
+            preload=""
+            >
+          </audio>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="playlist">
+            <button id="open" class="btn">+</button>
+            <table class="table">
+              <tr><td></td></tr>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const electron = require('electron')
+      const remote = electron.remote
+      const mainProcess = remote.require('./app')
+      document.getElementById('open').addEventListener('click', _ => {
+        let path = mainProcess.selectFiles()
+        let player = document.getElementById('player')
+
+        if (path && path.length > 0) {
+          player.src = path
+          player.load()
+        }
+      })
+    </script>
+
+  </body>
+</html>
